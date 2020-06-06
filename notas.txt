@@ -1,0 +1,241 @@
+O link do jquery deve ser colocado no topo da pagina:
+Source:
+https://code.jquery.com/
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" 
+integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+Vamos tambem inserir os links de bootstrap , no conjunto de 03 , com referencia de jquery.
+
+Com esses links tenho acesso aos modals popups de bootstrap
+
+-Vamos inserir as livrarias dos waypoints, que marcam as referencias para os inicios das
+animaçoes
+
+-Vamos inserir o fonte awesome.
+
+-Light box 2 plugin
+
+-Contador
+
+-Validador de formulario de contato formulario formulario.
+
+Scroll Spy
+Tambem e um elemento de bootstrap 
+Vamos aplica-lo no corpo inteiro da pagina , de maneira que possamos
+chamar o scrollspy nela toda.
+Para isso usamos esses 02 elementos:
+<body data-spy="scroll" data-target="#navbarResponsive">
+
+
+Vamos comecar com o navbar.
+
+Elemento de js dentro do botao de toggler:
+data-toggle="collapse"
+faz com que o botao se esconda caso a tela mude de tamanho.
+
+---Modificando as cores do link do menu:
+Primeiro tiramos a classe do bootstrap nav-dark 
+2- Modificamos a classe do link: .navbar-nav .nav-link{}
+3-Temos 02 opçoes: :active e o :hover
+
+-Removendo a linha externa do botao quando clicamos nele:
+button:focus{
+    outline: none;
+}
+
+Tambem retiramos as linhas externar dos links , usameros em este caso um webkit:
+button:focus, a:focus{
+    outline: 0;
+    -webkit-appearance: none;
+    box-shadow: none;
+}
+
+-Menu fixo no topo com a classe:
+fixed-top do bootstrap colocada na Tag nav:
+<nav class="navbar navbar-expand-lg solid fixed-top">
+
+-Modificando o fundo do menu de acordo com o scroll:
+1-Vamos selecionar todo o documento , depois que ele foi completamente carregado:
+$(document).ready(function(){
+    
+})
+
+funcao completa:
+$(document).ready(function () {
+    $(window).scroll(checkScroll)
+    function checkScroll() {
+        if ($(window).scrollTop() >= 300) {
+            $('.navbar').addClass('solid')
+        } else {
+            $('.navbar').removeClass('solid')
+        }
+
+    }
+})
+
+/*========== NAVBAR TRANSPARENT TO SOLID ==========*/
+A transicao do fundo eu faco diretamente na classe :
+
+.navbar.solid{
+    background: rgba(0,0,0,.7) !important;
+    transition: background-color 1s ease;
+}
+
+E para que quando volte ao inicio da tela fique o fundo branco
+adicionamos o transition diretamente no navbar:
+.navbar{
+    transition: background-color 1s ease;
+}
+
+funcao para o botao adicionar e retirar a classe do Menu:
+$(document).ready(function () {
+
+    checkScroll();
+    $(window).scroll(checkScroll);
+    $('.navbar-toggler').click(function () {
+        if ($(window).scrollTop() <= 300) {
+            console.log('polla gorda')
+            $('nav.navbar').toggleClass('solid');
+        }
+    })
+});
+
+/*========== CLOSE MOBILE MENU ON CLICK & SMOOTH SCROLL TO LINK ==========*/
+Que seria o scroll suave
+
+
+Landing Page Image:
+Como criamos a imagem header da pagina e como ele fica de fundo dentro da Tag
+sem fazer parte da mesma.
+
+
+Animando com o data-animation:
+data-animation
+
+Animando a seta para baixo com um simples codigo de css:
+animation: bounce 2s infinite;
+    -webkit-animation: bounce 2s infinite;
+
+
+Centralizando colunas:
+na mesma tag onde colocamos a classe row:
+justify-content-center
+
+Criando uma div sem espacos laterais:
+.container-fluid.px-0.
+px-0 = padding 0 no eixo X(horizontal).
+
+Centralizando uma div:
+.row.justify-content-center
+
+
+Tamanho das imagens com a classe:
+w-100 - tamanho de 100%
+w-25 - tamanho 25%
+
+
+LightBox
+Na tag di link :
+data-lightbox="nome-do-grupo-de-imagens"
+
+Img Gallery Hover effect:
+overflow hidden + transfor scale(1.3)
+
+LightBox Gallery em javaScript
+
+
+Pricing
+Centralizando uma tag , dentro da row
+<div class="row justify-content-center">
+					<div class="col-sm-6 col-md-6 text-center">
+
+
+
+Equipe:
+Primeiro vamos criar o fundo fixo e depois colocar os elementos encima, que quero saber
+como faremos isso?
+Sera que jogando tudo no mesmo div, position absolute  tudo fica sobreposto de depois
+vamos organizando com o z-index?
+
+Carrousel - vamos ter os textos do mesmo tamanho 
+classe : owl-stage / display: flex;
+Damos a classe card o tamanho de 100%
+
+
+Team Section Backup
+<div class="container">
+					<div class="os-animation" data-animation="fadeInUp">
+						<div id="team-carousel" class="owl-carousel owl-theme">
+							<div class="card">
+								<img src="img/team/ld01.jpg" alt="" class="card-img-top rounded-0">
+								<div class="card-body">
+									<h4 class="font-weight-bold">Lucas Dias Carvalho</h4>
+									<h3 class="texto-ld">Agrimensor</h3>
+									<p class="border-top border-bottom py-3 my-3">
+										Agrimensor formado na USP , especializado em projetos rurais
+										e grandes obras publicas.
+									</p>
+									<ul class="social">
+										<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+										<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+										<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+										<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+									</ul>
+								</div>
+							</div><!-- End of card -->
+
+							<div class="card">
+								<img src="img/team/team1.jpg" alt="" class="card-img-top rounded-0">
+								<div class="card-body">
+									<h4 class="font-weight-bold">Lucas Dias Carvalho</h4>
+									<h3 class="texto-ld">Agrimensor</h3>
+									<p class="border-top border-bottom py-3 my-3">
+										Teste de texto
+									</p>
+									<ul class="social">
+										<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+										<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+										<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+										<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+									</ul>
+								</div>
+							</div><!-- End of card -->
+
+							<div class="card">
+								<img src="img/team/team2.jpg" alt="" class="card-img-top rounded-0">
+								<div class="card-body">
+									<h4 class="font-weight-bold">Lucas Dias Carvalho</h4>
+									<h3 class="texto-ld">Agrimensor</h3>
+									<p class="border-top border-bottom py-3 my-3">
+										Teste de texto
+									</p>
+									<ul class="social">
+										<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+										<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+										<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+										<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+									</ul>
+								</div>
+							</div><!-- End of card -->
+
+							<div class="card">
+								<img src="img/team/team3.jpg" alt="" class="card-img-top rounded-0">
+								<div class="card-body">
+									<h4 class="font-weight-bold">Lucas Dias Carvalho</h4>
+									<h3 class="texto-ld">Agrimensor</h3>
+									<p class="border-top border-bottom py-3 my-3">
+										Teste de texto
+									</p>
+									<ul class="social">
+										<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+										<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+										<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+										<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+									</ul>
+								</div>
+							</div><!-- End of card -->
+
+						</div>
+					</div>
+				</div>

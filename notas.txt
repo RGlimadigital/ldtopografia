@@ -239,3 +239,12 @@ Team Section Backup
 						</div>
 					</div>
 				</div>
+
+
+
+                <ul class="list-group list-group-flush">
+  <li class="list-group-item">Equipe Profissional</li>
+  <li class="list-group-item">Experiência de Mercado</li>
+  <li class="list-group-item">Rapidez e Qualidade</li>
+ 
+</ul>
